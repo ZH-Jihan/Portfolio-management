@@ -22,6 +22,7 @@ router
     upload.single('file'),
     (req: Request, res: Response, next: NextFunction) => {
       req.body = JSON.parse(req.body?.data);
+      console.log(req.body);
       next();
     },
     validateRequestData(ProjectSchema),

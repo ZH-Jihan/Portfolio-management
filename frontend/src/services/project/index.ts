@@ -16,3 +16,35 @@ export const createProject = async (project: FormData) => {
     throw error;
   }
 };
+
+// Fetch all projects
+export const getAllProjects = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/project`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${await token()}`,
+      },
+    });
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// delete project
+export const deleteProject = async (id: string) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/project/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${await token()}`,
+      },
+    });
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
+};

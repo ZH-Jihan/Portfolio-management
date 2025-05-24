@@ -18,3 +18,20 @@ export const createBlog = async (blog: BlogPost) => {
     throw error;
   }
 };
+
+// Fetch all blogs
+export const getAllBlogs = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/blog`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${await token()}`,
+      },
+    });
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    throw error;
+  }
+};

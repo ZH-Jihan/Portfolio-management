@@ -10,7 +10,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: config.frontend_prodution_url,
+    origin: [
+      'https://zh-jihan.vercel.app',
+      `${config.frontend_prodution_url}`,
+      `${config.frontend_dev_url}`,
+    ],
     credentials: true,
   }),
 );
